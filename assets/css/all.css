@@ -25715,6 +25715,23 @@ blockquote cite {
 .logo_before {
     width: 140px;
 }
+.iframe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+
+.iframe-container iframe {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+.iframe-container iframe.loaded {
+  opacity: 1;
+}
 a {
     color: #06a77d;
 }

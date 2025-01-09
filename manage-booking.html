@@ -64,8 +64,15 @@
       <section class="booking_section pb-0">
         <div class="pt-0">
             <div style="position:relative;padding-top:56.25%;" class="iframebox">
-                <iframe src="https://testing.que.zone/p/bookings?themeName=white&themeConfig=%7B%22primary%22%3A%22%23ff0000%22%2C%22background%22%3A%22%23ffffff%22%7D&hideAppBar=true" frameborder="0" allowfullscreen
-                style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+              <div class="iframe-container">
+                <iframe 
+                  src="https://testing.que.zone/p/bookings?themeName=white&themeConfig=%7B%22primary%22%3A%22%23ff0000%22%2C%22background%22%3A%22%23ffffff%22%7D&hideAppBar=true" 
+                  frameborder="0" 
+                  allowfullscreen
+                  onload="this.classList.add('loaded')"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                </iframe>
+              </div>
             </div>
         </div>
       </section>  
