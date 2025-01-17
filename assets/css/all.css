@@ -25829,3 +25829,126 @@ a {
     min-height: 780px;
   }
 }
+
+/*---------------------------------------
+  VIDEO              
+-----------------------------------------*/
+.video-wrap {
+  z-index: -100;
+}
+
+.custom-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/*---------------------------------------
+  HERO        
+-----------------------------------------*/
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  height: calc(100vh - 51px);
+}
+
+.hero-section small {
+  color: var(--white-color);
+  text-transform: uppercase;
+}
+
+.hero-section .section-overlay {
+  z-index: 2;
+  opacity: 0.45;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.hero-section .container .row {
+  height: 100%;
+}
+
+
+/*---------------------------------------
+  SOCIAL ICON               
+-----------------------------------------*/
+.social-icon {
+  margin: 0;
+  padding: 0;
+  
+  margin-left: -20px;
+  margin-top: -50px;
+}
+
+
+.social-icon-item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
+.social-icon-link {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-large);
+  color: var(--white-color);
+  font-size: var(--copyright-font-size);
+  display: block;
+  margin-right: 10px;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  line-height: 36px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.social-icon-link:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+.social-icon-link span {
+  display: block;
+}
+
+.social-icon-link span:hover::before{
+  animation: spinAround 2s linear infinite;
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.social-logo {  
+  width: 80px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  height: 80px;
+  background-size: contain;
+}
+
+.ma-instagram {
+  background-image: url(../images/insta.png);
+  height: 45px;
+  margin-top: 32px;
+}
+.ma-facebook {
+  background-image: url(../images/fb.png);
+  height: 50px;
+  margin-top: 25px;
+}
+.ma-youtube {
+  background-image: url(../images/youtube.png);
+}
