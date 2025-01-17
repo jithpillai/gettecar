@@ -23222,6 +23222,30 @@ hr {
   left: 70px;
   bottom: -70px;
 }
+
+
+.gallery_item .item_image {
+  position: relative;
+  padding-top: 75%; 
+  overflow: hidden;
+}
+
+.gallery_item .item_image a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery_item .item_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
 .gallery_item {
   overflow: hidden;
   border-radius: 8px;
