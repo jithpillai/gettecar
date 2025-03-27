@@ -7,6 +7,10 @@
   <title>Gettecar – Platform for Used Vehicles </title>
   <link rel="shortcut icon" href="assets/images/logo/favourite_icon.svg">
   <link rel="stylesheet" type="text/css" href="assets/css/all.css">
+  <!--GCP: SMV Host, Project: My Maps Project,  API-Name: Quezone -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJTV4a0gWH32ZvBwIXdgxF0PbtqNI9owU&libraries=places">
+  </script>
 </head>
 
 <body>
@@ -557,7 +561,7 @@
           </div>
         </div>
         <div class="testimonial_carousel">
-          <div class="row common_carousel_3col" data-slick='{"dots": false, "centerMode": true}'>
+          <div class="row common_carousel_3col" data-slick='{"dots": false, "centerMode": true}' id="business-reviews">
             <div class="col carousel_item">
               <div class="testimonial_item">
                 <div class="testimonial_admin">
@@ -930,7 +934,54 @@ and trust. 🚗💨</p>
   <script>window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    gtag('config', 'G-TSZFRP5V2X');</script>
+    gtag('config', 'G-TSZFRP5V2X');
+  </script>
+  <script>
+    function initialize() {
+      // Create an invisible div to use with PlacesService
+      const serviceDiv = document.createElement('div');
+      const service = new google.maps.places.PlacesService(serviceDiv);
+      const request = {
+        placeId: 'ChIJrcs-6OZrrjsRDwDXhCDSiIA', 
+        fields: ['name', 'rating', 'reviews']
+      };
+      service.getDetails(request, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const reviewsContainer = document.getElementById('business-reviews');
+          if (place.reviews && place.reviews.length > 0) {
+            //console.log("review>>>",place.reviews);
+            const reviewsHTML = place.reviews.map(review => 
+            review.rating >=3 ?
+            `
+            <div class="col carousel_item">
+                <div class="testimonial_item">
+                  <div class="testimonial_admin">
+                    <div class="admin_thumbnail"><img src="${review.profile_photo_url}"
+                        alt="Vehicle Thumbnail Image"></div>
+                    <div class="admin_info">
+                      <h4 class="admin_name">${review.author_name}</h4><span class="admin_designation"></span>
+                    </div>
+                  </div>
+                  <ul class="rating_star">
+                    ${Array.from({ length: review.rating }, () => `<li><i class="fas fa-star"></i></li>`).join("")}
+                  </ul>
+                  <p class="mb-0">${review.text}</p><span class="quote_icon"><i class="fas fa-quote-right"></i></span>
+                </div>
+              </div>
+            `:
+            ''
+            ).join("");
+            reviewsContainer.innerHTML = reviewsHTML;
+          } else {
+            reviewsContainer.innerHTML = "<p>No reviews available.</p>";
+          }
+        } else {
+          console.error("Places Service Error:", status);
+          //document.getElementById('business-reviews').innerHTML = "<p>Failed to load reviews.</p>";
+        }
+      });
+    }
+    window.onload = initialize;
+  </script>
 </body>
 </html>
