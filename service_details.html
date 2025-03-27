@@ -605,9 +605,27 @@ and trust. 🚗💨</p>
             `:
             ''
             ).join("");
-            reviewsContainer.innerHTML = reviewsHTML;
+            $('#business-reviews').slick('unslick');
+              reviewsContainer.innerHTML = reviewsHTML;
+              $('#business-reviews').slick({
+                dots: true,
+                speed: 1000,
+                arrows: true,
+                infinite: true,
+                autoplay: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                pauseOnHover: true,
+                autoplaySpeed: 5000,
+                prevArrow: ".cc3c_left_arrow",
+                nextArrow: ".cc3c_right_arrow",
+                responsive: [
+                  { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+                  { breakpoint: 1501, settings: { slidesToShow: 2, slidesToScroll: 2 } }
+                ]
+              });
           } else {
-            reviewsContainer.innerHTML = "<p>No reviews available.</p>";
+            //reviewsContainer.innerHTML = "<p>No reviews available.</p>";
           }
         } else {
           console.error("Places Service Error:", status);
